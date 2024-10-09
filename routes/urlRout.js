@@ -1,16 +1,16 @@
 const express = require('express')
-
 const router = express.Router()
-
-
 const ShortURL = require('../models/urlSchema')
 
-router.get('/',async(req,res)=>{
-    const shorturls = await ShortURL.find()
-
-    res.render('index',{shorturls: shorturls})
-})
-
+router.get('/', async (req, res) => {
+    try {
+        const shorturls = await ShortURL.find();  // Fetch all short URLs
+        res.render('index', { shorturls: shorturls });  // Render the EJS template
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);  // Handle errors gracefully
+    }
+});
 router.post('/shortUrls',async(req,res)=>{
     
     const url = req.body.full
@@ -22,23 +22,26 @@ router.post('/shortUrls',async(req,res)=>{
     res.redirect('/')
 })
 //post end
-
 //view data
-
 // Using $inc operator for better performance
 router.get('/:shortUrl', async (req, res) => {
-    const shortUrl = await ShortURL.findOneAndUpdate(
-        { short: req.params.shortUrl },
-        { $inc: { click: 1 } },
-        { new: true }
-    );
-    if (shortUrl == null) {
-        return res.sendStatus(404);
+    try {
+        const shortUrl = await ShortURL.findOneAndUpdate(
+            { short: req.params.shortUrl },  // Find the document with the matching short URL
+            { $inc: { clicks: 1 } },         // Increment the click count by 1
+            { new: true }                    // Return the updated document
+        );
+        
+        if (shortUrl == null) {
+            return res.sendStatus(404);  // If the short URL is not found, return a 404 error
+        }
+
+        res.redirect(shortUrl.full);  // Redirect to the full URL
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);  // Handle any errors by returning a 500 Internal Server Error
     }
-
-    res.redirect(shortUrl.full);
 });
-
 
 router.get('/delete/:id',async(req,res)=>{
     const id = req.params.id
@@ -47,8 +50,6 @@ router.get('/delete/:id',async(req,res)=>{
         await ShortURL.deleteOne({ _id : id})
         console.log('delete');
         res.redirect('/')
-
-
     }catch(err){
         console.log(err);
     }

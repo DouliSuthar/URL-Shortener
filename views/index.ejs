@@ -36,33 +36,31 @@
   </div>
 
   
-  <%   shorturls.forEach(url => { %>
-  
-
-    <div class="links">
-        <div class="link-box">
-           <div class="full">
-              <a href="<%= url.full %>"><%= url.full %></a>
+  <% if (shorturls && shorturls.length > 0) { %>
+   <% shorturls.forEach(url => { %>
+       <div class="links">
+           <div class="link-box">
+               <div class="full">
+                   <a href="<%= url.full %>"><%= url.full %></a>
+               </div>
+               <div class="short">
+                   <a target="_blank" href="<%= url.short %>"><%= url.short %></a>
+               </div>
+               <div class="clicks">
+                   <span><%= url.clicks %></span>
+               </div>
+               <div class="delete">
+                   <a href="/delete/<%= url._id %>">
+                       <span class="material-symbols-outlined">auto_delete</span>
+                   </a>
+               </div>
            </div>
-           <div class="short">
-              <a target="_blank" href="<%= url.short %>"><%= url.short %></a>
-           </div>
-           
-           <div class="clicks">
-              <span><%= url.clicks %></span>
-           </div>
+       </div>
+   <% }); %>
+<% } else { %>
+   <p>No URLs available. Please add some!</p>
+<% } %>
 
-           <div class="delete">
-            <a href="/delete/<%= url._id %>">
-                <span class="material-symbols-outlined">
-                    auto_delete
-                    </span>
-            </a>
-          </div>     
-        </div>
-    </div>
-
-  <%});  %>
 
 
 </div>

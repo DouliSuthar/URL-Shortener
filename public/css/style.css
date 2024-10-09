@@ -1,42 +1,57 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
- body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
- }
 
-.container  {
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f4f4f9; /* Light background for contrast */
+}
+
+.container {
     width: 95%;
     margin: auto;
-    background: #264653;
+    background: #3a3d5c; /* Deep navy background */
     text-align: center;
     padding: 80px 30px;
-}
-.container .heading{
-     font-size: 72px;
-     color: #e9c46a;
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-div.form{
+.container .heading {
+    font-size: 72px;
+    color: #ffcb77; /* Warm golden-yellow for the heading */
+}
+
+div.form {
     padding: 30px 0;
-
 }
+
 div.form form input {
-    padding: 5px 30px ;
+    padding: 5px 30px;
     width: 80%;
     font-size: 20px;
-
+    border: 2px solid #ffcb77; /* Matching border color */
+    border-radius: 4px; /* Slightly rounded input fields */
+    background-color: #f4f4f9; /* Light background for inputs */
+    color: #3a3d5c; /* Darker text for readability */
 }
 
-div.form form button{
+div.form form button {
     border: 0;
     outline: none;
-    background-color: #2a9d8f;
+    background-color: #5970d0; /* Bright blue button */
     padding: 10px 24px;
     color: #fff;
     font-size: 18px;
+    border-radius: 4px; /* Matching rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+div.form form button:hover {
+    background-color: #4255a3; /* Darker shade on hover */
 }
 
 /* link-box */
@@ -44,27 +59,45 @@ div.form form button{
 .link-box {
     display: flex;
     flex-wrap: wrap;
-    background: #e9c46a;
+    background: #ffcb77; /* Warm background for link box */
     padding: 20px;
     margin: 4px;
+    border-radius: 8px; /* Rounded corners for consistency */
 }
-.link-box .full , .link-box .short{
+
+.link-box .full, .link-box .short {
     width: 40%;
 }
 
-.link-box div a{
-    color: #264653;
+.link-box div a {
+    color: #3a3d5c; /* Dark text for links */
+    text-decoration: none;
+    font-weight: bold; /* Bold text for emphasis */
 }
 
-.clicks{
+.link-box div a:hover {
+    text-decoration: underline; /* Underline on hover for clarity */
+}
+
+.clicks {
     height: 20px;
     width: 20px;
-    background: #2a9d8f;
+    background: #5970d0; /* Matching blue for clicks */
     color: #fff;
     border-radius: 50%;
     margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the number inside */
+    font-size: 14px; /* Adjusted font size */
 }
-.delete span{
-  color:  #d11a2a;
-  font-size: 24px;
+
+.delete span {
+    color: #e63946; /* Vivid red for delete action */
+    font-size: 24px;
+    cursor: pointer; /* Cursor pointer for delete */
+}
+
+.delete span:hover {
+    color: #b71c1c; /* Darker red on hover */
 }
