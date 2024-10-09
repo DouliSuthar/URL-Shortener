@@ -4,13 +4,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 require("dotenv").config();
 
-<<<<<<< HEAD
 mongoose.connect(process.env.MONGO_URL);
-=======
-
-
-mongoose.connect('process.env.MONGO_URL')
->>>>>>> e2b580257ce7e85108b588733cbc67ebda9c4938
 
 const db = mongoose.connection;
 
