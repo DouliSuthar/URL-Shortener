@@ -53,7 +53,7 @@ router.get('/delete/:id',async(req,res)=>{
     }catch(err){
         console.log(err);
     }
-    res.send(id)
+    // res.send(id)
 })
 
 module.exports = router
